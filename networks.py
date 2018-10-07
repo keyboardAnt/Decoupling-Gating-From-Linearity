@@ -251,7 +251,7 @@ class GaLUNetwork_Shallow_Rd(nn.Module):
             for i in tqdm(range(iters)):
                 self.update_A()
                 self.update_B()
-        self.optimize_finalize()
+        self._optimize_finalize()
 
     def optimize_heuristic(self, X, Y, max_iters=1000000, eps=0.001):
         self._optimize_init(X, Y)
@@ -270,7 +270,7 @@ class GaLUNetwork_Shallow_Rd(nn.Module):
             else:
                 print("Convergence Failed: prev_loss={:.2e} loss={:2e}".format(
                     prev_loss, loss))
-        self.optimize_finalize()
+        self._optimize_finalize()
 
     def update_B(self):
         b = torch.gels(self.Y, self.A(self.X) * self.M)[0]
