@@ -4,7 +4,9 @@ This repositorty contains supplementary material for our "Decoupling Gating from
 
 ## Dependencies
 
-The code dependes on CPython3, Numpy and PyTorch (including torchvision). It also supports the "tqdm" library for creating fancy progress bars (but it isn't required). It was only tested on a linux machine, with Python 3.5.3, Numpy 1.14.5 and PyTorch 0.4.1, but should work with other versions as well.
+The code dependes on [CPython3](www.python.org), [Numpy](http://www.numpy.org/) and [PyTorch](https://pytorch.org/) (including torchvision). It also supports the [tqdm](https://github.com/tqdm/tqdm) library for creating fancy progress bars (but it isn't required). It was only tested on a linux machine, with Python 3.5.3, Numpy 1.14.5 and PyTorch 0.4.1, but should work with other versions as well.
+
+I addition, the plots.py script requires [matplotlib](https://matplotlib.org/) and [matplotlib2tikz](https://github.com/nschloe/matplotlib2tikz).
 
 ## Commands
 
