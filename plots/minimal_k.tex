@@ -1,0 +1,49 @@
+% This file was created by matplotlib2tikz v0.6.18.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.886274509803922,0.290196078431373,0.2}
+\definecolor{color1}{rgb}{0.203921568627451,0.541176470588235,0.741176470588235}
+
+\begin{axis}[
+axis background/.style={fill=white!89.80392156862746!black},
+axis line style={white},
+legend cell align={left},
+legend entries={{ReLU},{GaLU}},
+legend style={at={(0.03,0.97)}, anchor=north west, draw=white!80.0!black, fill=white!89.80392156862746!black},
+tick align=outside,
+tick pos=left,
+title={Minimal Number of Neurons to achieve MSE$<0.3$},
+x grid style={white},
+xlabel={Output Dimension $d'$},
+xmajorgrids,
+xmin=-5.35, xmax=134.35,
+y grid style={white},
+ylabel={Minimal $k$},
+ymajorgrids,
+ymin=-3.5, ymax=425.5
+]
+\addlegendimage{no markers, color0}
+\addlegendimage{no markers, color1}
+\addplot [semithick, color0, mark=*, mark size=3, mark options={solid}]
+table [row sep=\\]{%
+1	16 \\
+8	93 \\
+16	160 \\
+32	232 \\
+64	317 \\
+96	370 \\
+128	406 \\
+};
+\addplot [semithick, color1, mark=x, mark size=3, mark options={solid}]
+table [row sep=\\]{%
+1	22 \\
+8	102 \\
+16	160 \\
+32	226 \\
+64	308 \\
+96	356 \\
+128	390 \\
+};
+\end{axis}
+
+\end{tikzpicture}

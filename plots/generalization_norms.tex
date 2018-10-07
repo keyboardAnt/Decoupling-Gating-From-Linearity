@@ -1,0 +1,67 @@
+% This file was created by matplotlib2tikz v0.6.18.
+\begin{tikzpicture}
+
+\definecolor{color0}{rgb}{0.886274509803922,0.290196078431373,0.2}
+
+\begin{groupplot}[group style={group size=2 by 1}]
+\nextgroupplot[
+axis background/.style={fill=white!89.80392156862746!black},
+axis line style={white},
+tick align=outside,
+tick pos=left,
+title={$\ell_2$},
+x grid style={white},
+xlabel={$\ell_2^2$ of weights},
+xmajorgrids,
+xmin=-700.571, xmax=14909.551,
+y grid style={white},
+ylabel={test loss - train loss},
+ymajorgrids,
+ymin=-1.24900964, ymax=26.56675284
+]
+\addplot [semithick, color0, mark=*, mark size=3, mark options={solid}, forget plot]
+table [row sep=\\]{%
+8.98	0.0153432 \\
+150	0.26696 \\
+575	1.02602 \\
+1280	2.29114 \\
+2280	4.0643 \\
+3560	6.3455 \\
+5120	9.1248 \\
+6970	12.4521 \\
+9100	16.2375 \\
+11500	20.521 \\
+14200	25.3024 \\
+};
+\nextgroupplot[
+axis background/.style={fill=white!89.80392156862746!black},
+axis line style={white},
+tick align=outside,
+tick pos=left,
+title={$\ell_2$},
+x grid style={white},
+xlabel={$\ell_1^2$ of weights},
+xmajorgrids,
+xmin=-386899.0055, xmax=8231757.0955,
+y grid style={white},
+ylabel={test loss - train loss},
+ymajorgrids,
+ymin=-1.24900964, ymax=26.56675284
+]
+\addplot [semithick, color0, mark=*, mark size=3, mark options={solid}, forget plot]
+table [row sep=\\]{%
+4858.09	0.0153432 \\
+82369	0.26696 \\
+316969	1.02602 \\
+707281	2.29114 \\
+1254400	4.0643 \\
+1960000	6.3455 \\
+2822400	9.1248 \\
+3841600	12.4521 \\
+5017600	16.2375 \\
+6350400	20.521 \\
+7840000	25.3024 \\
+};
+\end{groupplot}
+
+\end{tikzpicture}
