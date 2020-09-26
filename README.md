@@ -19,5 +19,5 @@ python minimal_k.py results/minimal_k.txt relu galu0 -m 1024 -d 32 -d_ 128 96 64
 ```
 And for the figures:
 ```
-  python plots.py
+python plots.py
 ```
