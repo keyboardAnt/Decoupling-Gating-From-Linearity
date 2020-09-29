@@ -1,49 +1,30 @@
-% This file was created by matplotlib2tikz v0.6.18.
+% This file was created by tikzplotlib v0.9.4.
 \begin{tikzpicture}
 
 \definecolor{color0}{rgb}{0.886274509803922,0.290196078431373,0.2}
-\definecolor{color1}{rgb}{0.203921568627451,0.541176470588235,0.741176470588235}
 
 \begin{axis}[
-axis background/.style={fill=white!89.80392156862746!black},
+axis background/.style={fill=white!89.8039215686275!black},
 axis line style={white},
 legend cell align={left},
-legend entries={{ReLU},{GaLU}},
-legend style={at={(0.03,0.97)}, anchor=north west, draw=white!80.0!black, fill=white!89.80392156862746!black},
+legend style={fill opacity=0.8, draw opacity=1, text opacity=1, draw=white!80!black, fill=white!89.8039215686275!black},
 tick align=outside,
 tick pos=left,
-title={Minimal Number of Neurons to achieve MSE$<0.3$},
-x grid style={white},
-xlabel={Output Dimension $d'$},
+title={Minimal Number of Neurons to achieve MSE\(\displaystyle <0.3\)},
+xlabel={Output Dimension \(\displaystyle d'\)},
 xmajorgrids,
-xmin=-5.35, xmax=134.35,
+xmin=0.945, xmax=1.055,
 y grid style={white},
-ylabel={Minimal $k$},
+ylabel={Minimal \(\displaystyle k\)},
 ymajorgrids,
-ymin=-3.5, ymax=425.5
+ymin=1.89, ymax=2.11,
+ytick style={color=white!33.3333333333333!black}
 ]
-\addlegendimage{no markers, color0}
-\addlegendimage{no markers, color1}
 \addplot [semithick, color0, mark=*, mark size=3, mark options={solid}]
-table [row sep=\\]{%
-1	16 \\
-8	93 \\
-16	160 \\
-32	232 \\
-64	317 \\
-96	370 \\
-128	406 \\
+table {%
+1 2
 };
-\addplot [semithick, color1, mark=x, mark size=3, mark options={solid}]
-table [row sep=\\]{%
-1	22 \\
-8	102 \\
-16	160 \\
-32	226 \\
-64	308 \\
-96	356 \\
-128	390 \\
-};
+\addlegendentry{ReLU}
 \end{axis}
 
 \end{tikzpicture}

@@ -1,101 +1,105 @@
-% This file was created by matplotlib2tikz v0.6.18.
+% This file was created by tikzplotlib v0.9.4.
 \begin{tikzpicture}
 
 \definecolor{color0}{rgb}{0.886274509803922,0.290196078431373,0.2}
-\definecolor{color2}{rgb}{0.596078431372549,0.556862745098039,0.835294117647059}
 \definecolor{color1}{rgb}{0.203921568627451,0.541176470588235,0.741176470588235}
+\definecolor{color2}{rgb}{0.596078431372549,0.556862745098039,0.835294117647059}
 
 \begin{groupplot}[group style={group size=2 by 1}]
 \nextgroupplot[
-axis background/.style={fill=white!89.80392156862746!black},
+axis background/.style={fill=white!89.8039215686275!black},
 axis line style={white},
 tick align=outside,
 tick pos=left,
 title={MNIST},
 x grid style={white},
-xlabel={$k$},
+xlabel={\(\displaystyle k\)},
 xmajorgrids,
 xmin=12, xmax=100,
+xtick style={color=white!33.3333333333333!black},
 y grid style={white},
 ylabel={1 - Test Accuracy},
 ymajorgrids,
-ymin=0, ymax=0.1
+ymin=0, ymax=0.1,
+ytick style={color=white!33.3333333333333!black}
 ]
-\addplot [semithick, color0, mark=*, mark size=3, mark options={solid}, forget plot]
-table [row sep=\\]{%
-16	0.0408 \\
-32	0.0353 \\
-48	0.0324 \\
-64	0.0267 \\
-80	0.0238 \\
-96	0.0218 \\
+\addplot [semithick, color0, mark=*, mark size=3, mark options={solid}]
+table {%
+16 0.0408
+32 0.0353
+48 0.0324
+64 0.0267
+80 0.0238
+96 0.0218
 };
-\addplot [semithick, color1, mark=x, mark size=3, mark options={solid}, forget plot]
-table [row sep=\\]{%
-16	0.0567 \\
-32	0.0421 \\
-48	0.0351 \\
-64	0.0322 \\
-80	0.0308 \\
-96	0.0281 \\
+\addplot [semithick, color1, mark=x, mark size=3, mark options={solid}]
+table {%
+16 0.0567
+32 0.0421
+48 0.0351
+64 0.0322
+80 0.0308
+96 0.0281
 };
-\addplot [semithick, color2, mark=triangle*, mark size=3, mark options={solid,rotate=180}, forget plot]
-table [row sep=\\]{%
-16	0.0828 \\
-32	0.083 \\
-48	0.083 \\
-64	0.0832 \\
-80	0.0834 \\
-96	0.0834 \\
+\addplot [semithick, color2, mark=triangle*, mark size=3, mark options={solid,rotate=180}]
+table {%
+16 0.0828
+32 0.083
+48 0.083
+64 0.0832
+80 0.0834
+96 0.0834
 };
+
 \nextgroupplot[
-axis background/.style={fill=white!89.80392156862746!black},
+axis background/.style={fill=white!89.8039215686275!black},
 axis line style={white},
 legend cell align={left},
-legend entries={{ReLU},{GaLU0},{Linear}},
-legend style={draw=white!80.0!black, fill=white!89.80392156862746!black},
+legend style={fill opacity=0.8, draw opacity=1, text opacity=1, draw=white!80!black, fill=white!89.8039215686275!black},
 tick align=outside,
 tick pos=left,
 title={Fashion MNIST},
 x grid style={white},
-xlabel={$k$},
+xlabel={\(\displaystyle k\)},
 xmajorgrids,
 xmin=12, xmax=100,
+xtick style={color=white!33.3333333333333!black},
 y grid style={white},
 ylabel={1 - Test Accuracy},
 ymajorgrids,
-ymin=0.1, ymax=0.2
+ymin=0.1, ymax=0.2,
+ytick style={color=white!33.3333333333333!black}
 ]
-\addlegendimage{no markers, color0}
-\addlegendimage{no markers, color1}
-\addlegendimage{no markers, color2}
 \addplot [semithick, color0, mark=*, mark size=3, mark options={solid}]
-table [row sep=\\]{%
-16	0.139 \\
-32	0.13 \\
-48	0.129 \\
-64	0.128 \\
-80	0.126 \\
-96	0.127 \\
+table {%
+16 0.139
+32 0.13
+48 0.129
+64 0.128
+80 0.126
+96 0.127
 };
+\addlegendentry{ReLU}
 \addplot [semithick, color1, mark=x, mark size=3, mark options={solid}]
-table [row sep=\\]{%
-16	0.149 \\
-32	0.136 \\
-48	0.13 \\
-64	0.128 \\
-80	0.123 \\
-96	0.123 \\
+table {%
+16 0.149
+32 0.136
+48 0.13
+64 0.128
+80 0.123
+96 0.123
 };
+\addlegendentry{GaLU0}
 \addplot [semithick, color2, mark=triangle*, mark size=3, mark options={solid,rotate=180}]
-table [row sep=\\]{%
-16	0.168 \\
-32	0.168 \\
-48	0.168 \\
-64	0.168 \\
-80	0.168 \\
-96	0.168 \\
+table {%
+16 0.168
+32 0.168
+48 0.168
+64 0.168
+80 0.168
+96 0.168
 };
+\addlegendentry{Linear}
 \end{groupplot}
 
 \end{tikzpicture}
