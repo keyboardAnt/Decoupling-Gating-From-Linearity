@@ -4,7 +4,8 @@ import numpy as np
 import torch
 from torch import nn
 from torch.nn import functional as F
-from torch.optim import Adam
+# from torch.optim import Adam
+from torch.optim import SGD
 
 
 NON_LINEARITIES = {
@@ -85,10 +86,11 @@ class ReLUNetwork(nn.Module):
     def optimize(self, X, Y, criterion, batch_size, iters, lr,
         tqdm=lambda x: x):
 
-        if self.optimize_all:
-            optimizer = Adam(self.parameters(), lr=lr)
-        else:
-            optimizer = Adam(self.readout.parameters(), lr=lr)
+        # if self.optimize_all:
+        #     optimizer = Adam(self.parameters(), lr=lr)
+        # else:
+        #     optimizer = Adam(self.readout.parameters(), lr=lr)
+        optimizer = SGD(self.parameters(), lr=lr)
 
         for ind in tqdm(Batches(X.shape[0], batch_size, iters)):
             optimizer.zero_grad()

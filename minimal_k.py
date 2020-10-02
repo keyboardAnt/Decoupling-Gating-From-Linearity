@@ -17,13 +17,13 @@ parser.add_argument("-m", type=int, nargs="+", default=[1024])
 parser.add_argument("-d", type=int, nargs="+", default=[100])
 parser.add_argument("-d_", type=int, nargs="+", default=[10])
 parser.add_argument("-T", type=int, nargs="+", default=[1])
-parser.add_argument("--target_loss", type=float, nargs="+", default=[0.3])
+parser.add_argument("--target_loss", type=float, nargs="+", default=[0.3]) # Not supported anymore
 
 parser.add_argument("--lr", type=float, nargs="+", default=[0.001])
 parser.add_argument("--iters", type=int, default=100000)
 parser.add_argument("--batch_size", type=int, default=128)
 
-parser.add_argument("--min_k", type=int, default=1)
+parser.add_argument("--min_k", type=int, default=1) # Not supported anymore
 parser.add_argument("--max_k", type=int, default=512)
 
 parser.add_argument("--repeat", type=int, default=1)
@@ -52,65 +52,39 @@ with open(args.output_file, "w") as f:
     print("\n", file=f)
 title = "network_type={}, T={}, m={}, d={}, k={}, d_={}, lr={:.2e}"
 
+
+def _set_seeds(seed: int) -> None:
+    if seed is not None:
+        torch.manual_seed(seed)
+        np.random.seed(seed)
+
+
+_set_seeds(args.seed)
+
 criterion = nn.MSELoss()
-combinations = list(product(args.T, args.m, args.d, args.target_loss, args.d_,
-    args.network_type, args.lr))
-
-if args.seed is not None:
-    torch.manual_seed(args.seed)
-    np.random.seed(args.seed)
-
-# binary_search_size = int(np.log2(args.max_k - args.min_k + 1)) + 2
 
 max_k = args.max_k
 max_d = args.d[0]
-
 heatmap = np.zeros((max_k, max_d))
 
+
+combinations = list(product(args.T, args.m, args.d, args.target_loss, args.d_, args.network_type, args.lr))
 for T, m, d, target_loss, d_, network_type, lr in tqdm(combinations):
-    # min_k, max_k = args.min_k, args.max_k
-    # tested_k = set()
-#    while (max_k - min_k) > 0:
-    for k in range(1, heatmap.shape[0]):
-        for d in range(1, heatmap.shape[1]):
+    # Generate the data labels
+    # Y = torch.empty(m, d_).fill_(.5)
+    # Y = torch.bernoulli(Y)
+    Y = torch.randn(m, d_)
+    for d in range(1, heatmap.shape[1] + 1):
+        # Generate the data inputs
+        X = torch.randn(m, d)
+        for k in range(1, heatmap.shape[0] + 1):
             print(f'k={k}, d={d}')
-    # for i in tqdm(range(binary_search_size)):
-    #     k = (max_k + min_k) // 2
-    #     if k in tested_k:
-    #         k = k + 1
-    #         if k in tested_k:
-    #             break
-    #     tested_k.add(k)
-
             train_loss = 0.
-
-            # if args.seed is not None:
-            #     torch.manual_seed(args.seed)
-            #     np.random.seed(args.seed)
-
-            for j in tqdm(range(args.repeat)):
-                X = torch.randn(m, d)
-                Y = torch.randn(m, d_)
-                # Y = torch.bernoulli(.5, out=(m, d_))
-
-                network = networks.NETWORKS[network_type](d, d_, k, T)
-                network.optimize(X, Y, criterion, args.batch_size, args.iters, lr, tqdm)
-
-                Y_hat = network(X)
-                train_loss += criterion(Y_hat, Y)
-
+            network = networks.NETWORKS[network_type](d, d_, k, T)
+            network.optimize(X, Y, criterion, args.batch_size, args.iters, lr, tqdm)
+            Y_hat = network(X)
+            train_loss += criterion(Y_hat, Y)
             train_loss /= args.repeat
-
-            # with open(args.output_file, "a") as f:
-            #     print(title.format(network_type, T, m, d, k, d_, lr), file=f)
-            #     print("=" * len(title), file=f)
-            #     print("loss={:.2e}".format(train_loss), file=f)
-            #     print("\n", file=f)
-
-            # if train_loss > target_loss:
-            #     min_k = k
-            # if train_loss < target_loss:
-            #     max_k = k
             heatmap[k - 1, d - 1] = train_loss
 
 heatmap_filename = 'heatmap_network_type={}, T={}, m={}, d={}, k={}, d_={}, lr={:.2e}.npy'\

@@ -1,7 +1,7 @@
-Namespace(T=[1], batch_size=128, d=[100], d_=[1], iters=15000, lr=[0.001], m=[100], max_k=100, min_k=1, network_type=['relu'], output_file='results/minimal_k.txt', repeat=2, seed=42, target_loss=[0.3], tqdm=1)
-iters=15000
-batch_size=128
-repeat=2
+Namespace(T=[1], batch_size=100, d=[30], d_=[1], iters=5000, lr=[0.1], m=[100], max_k=30, min_k=1, network_type=['relu'], output_file='results/minimal_k.txt', repeat=1, seed=42, target_loss=[0.3], tqdm=1)
+iters=5000
+batch_size=100
+repeat=1
 seed=42
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
